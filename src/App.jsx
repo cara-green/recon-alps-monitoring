@@ -52,7 +52,6 @@ export default function MeribelAvalancheDashboard() {
   const [loading, setLoading] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [chartView, setChartView] = useState('7days');
-  const [selectedWebcam, setSelectedWebcam] = useState(0);
 
   useEffect(() => {
     fetchWeatherData();
@@ -208,51 +207,50 @@ export default function MeribelAvalancheDashboard() {
           
           <div className="grid md:grid-cols-2 gap-4 mb-4">
             {MERIBEL_WEBCAMS.map((cam, idx) => (
-              <button
+              <a
                 key={idx}
-                onClick={() => setSelectedWebcam(idx)}
-                className={`p-3 rounded-lg text-left transition-all ${
-                  selectedWebcam === idx
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-slate-50 hover:bg-slate-100 text-slate-700'
-                }`}
+                href={cam.linkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-6 bg-gradient-to-br from-slate-50 to-slate-100 hover:from-blue-50 hover:to-blue-100 rounded-lg transition-all group border-2 border-transparent hover:border-blue-300 shadow-sm hover:shadow-md"
               >
-                <div className="font-medium">{cam.name}</div>
-              </button>
+                <div className="flex items-start justify-between mb-2">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-blue-600 rounded-lg group-hover:bg-blue-700 transition-colors">
+                      <Camera className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-800 group-hover:text-blue-600 text-lg">
+                        {cam.name}
+                      </div>
+                      <div className="text-sm text-slate-600">
+                        {cam.description}
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-5 h-5 text-slate-400 group-hover:text-blue-600 flex-shrink-0" />
+                </div>
+                <div className="mt-3 text-sm text-slate-500 group-hover:text-blue-600 font-medium">
+                  Click to view live webcam →
+                </div>
+              </a>
             ))}
           </div>
 
-          {/* Selected Webcam Display */}
-          <div className="bg-slate-900 rounded-lg overflow-hidden relative" style={{ height: '500px' }}>
-            <img
-              src={`${MERIBEL_WEBCAMS[selectedWebcam].imageUrl}?t=${Date.now()}`}
-              alt={MERIBEL_WEBCAMS[selectedWebcam].name}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                e.target.src = 'https://via.placeholder.com/1200x500/1e293b/cbd5e1?text=Webcam+Temporarily+Unavailable';
-              }}
-            />
-            <button
-              onClick={() => {
-                const img = document.querySelector('img[alt="' + MERIBEL_WEBCAMS[selectedWebcam].name + '"]');
-                img.src = `${MERIBEL_WEBCAMS[selectedWebcam].imageUrl}?t=${Date.now()}`;
-              }}
-              className="absolute bottom-4 right-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg flex items-center gap-2 transition-colors"
-            >
-              <RefreshCw className="w-4 h-4" />
-              Refresh Image
-            </button>
-          </div>
-          
-          <div className="mt-3 text-sm text-slate-600 flex items-center justify-between">
-            <span>Currently viewing: <strong>{MERIBEL_WEBCAMS[selectedWebcam].name}</strong></span>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <p className="text-sm text-blue-800 mb-2">
+              <strong>📹 Live Webcams:</strong> Click any camera above to view real-time conditions in Méribel.
+            </p>
+            <p className="text-sm text-blue-700">
+              Webcams update every few minutes and show current weather, snow conditions, and visibility. Perfect for checking conditions before heading out!
+            </p>
             <a
               href="https://www.meribel.net/en/practical-information/weather/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-blue-600 hover:text-blue-800 font-medium"
+              className="inline-flex items-center gap-1 mt-2 text-sm text-blue-600 hover:text-blue-800 font-semibold"
             >
-              View All Méribel Webcams <ExternalLink className="w-3 h-3" />
+              View all Méribel webcams <ExternalLink className="w-3 h-3" />
             </a>
           </div>
         </div>
@@ -485,7 +483,7 @@ export default function MeribelAvalancheDashboard() {
         </div>
 
         {/* Data Sources & Disclaimer */}
-        <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        <div className="mt-6 bg-pink-50 border border-yellow-200 rounded-lg p-4">
           <h3 className="font-semibold text-yellow-800 mb-2">⚠️ Important Information</h3>
           <p className="text-sm text-yellow-700 mb-2">
             This dashboard is for informational purposes only. For backcountry skiing and off-piste activities, always:
