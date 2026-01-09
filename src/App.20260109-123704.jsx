@@ -3,8 +3,8 @@ import { AlertTriangle, Mountain, Thermometer, Wind, Camera, ExternalLink, Refre
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const REGIONS = [
-  { id: 'meribel-mont-vallon', name: 'Meribel Mont Vallon', lat: 45.35, lon: 6.6 },
-  { id: 'meribel-mid-mountain', name: 'Meribel mid-mountain', lat: 45.39, lon: 6.59 },
+  { id: 'haute-savoie', name: 'Haute-Savoie', lat: 45.9, lon: 6.6 },
+  { id: 'savoie', name: 'Savoie', lat: 45.5, lon: 6.5 },
   { id: 'isere', name: 'Isère', lat: 45.2, lon: 6.0 },
   { id: 'hautes-alpes', name: 'Hautes-Alpes', lat: 44.8, lon: 6.3 }
 ];
