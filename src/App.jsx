@@ -17,26 +17,26 @@ const RISK_LEVELS = {
   5: { label: 'Very High', color: 'bg-purple-500', textColor: 'text-purple-700', bgLight: 'bg-purple-50' }
 };
 
-// Méribel webcams with embed URLs
+// Méribel webcams - using image URLs that auto-refresh
 const MERIBEL_WEBCAMS = [
   {
     name: 'Saulire Summit (2700m)',
-    embedUrl: 'https://www.meribel.net/en/webcam-embed/saulire/',
+    imageUrl: 'https://s3-eu-west-1.amazonaws.com/panomax-e1/cams/5644/recent_full.jpg',
     linkUrl: 'https://www.meribel.net/en/practical-information/weather/'
   },
   {
-    name: 'Méribel Centre',
-    embedUrl: 'https://www.meribel.net/en/webcam-embed/centre/',
+    name: 'Méribel Centre - Chaudanne',
+    imageUrl: 'https://s3-eu-west-1.amazonaws.com/panomax-e1/cams/5645/recent_full.jpg',
     linkUrl: 'https://www.meribel.net/en/practical-information/weather/'
   },
   {
     name: 'Rond Point des Pistes',
-    embedUrl: 'https://www.meribel.net/en/webcam-embed/rond-point/',
+    imageUrl: 'https://s3-eu-west-1.amazonaws.com/panomax-e1/cams/5646/recent_full.jpg',
     linkUrl: 'https://www.meribel.net/en/practical-information/weather/'
   },
   {
-    name: 'Moon Park',
-    embedUrl: 'https://www.meribel.net/en/webcam-embed/moon-park/',
+    name: 'Altiport',
+    imageUrl: 'https://s3-eu-west-1.amazonaws.com/panomax-e1/cams/5647/recent_full.jpg',
     linkUrl: 'https://www.meribel.net/en/practical-information/weather/'
   }
 ];
@@ -219,14 +219,25 @@ export default function MeribelAvalancheDashboard() {
           </div>
 
           {/* Selected Webcam Display */}
-          <div className="bg-slate-900 rounded-lg overflow-hidden" style={{ height: '500px' }}>
-            <iframe
-              src={MERIBEL_WEBCAMS[selectedWebcam].embedUrl}
-              className="w-full h-full"
-              frameBorder="0"
-              allowFullScreen
-              title={MERIBEL_WEBCAMS[selectedWebcam].name}
+          <div className="bg-slate-900 rounded-lg overflow-hidden relative" style={{ height: '500px' }}>
+            <img
+              src={`${MERIBEL_WEBCAMS[selectedWebcam].imageUrl}?t=${Date.now()}`}
+              alt={MERIBEL_WEBCAMS[selectedWebcam].name}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/1200x500/1e293b/cbd5e1?text=Webcam+Temporarily+Unavailable';
+              }}
             />
+            <button
+              onClick={() => {
+                const img = document.querySelector('img[alt="' + MERIBEL_WEBCAMS[selectedWebcam].name + '"]');
+                img.src = `${MERIBEL_WEBCAMS[selectedWebcam].imageUrl}?t=${Date.now()}`;
+              }}
+              className="absolute bottom-4 right-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg flex items-center gap-2 transition-colors"
+            >
+              <RefreshCw className="w-4 h-4" />
+              Refresh Image
+            </button>
           </div>
           
           <div className="mt-3 text-sm text-slate-600 flex items-center justify-between">
