@@ -99,7 +99,7 @@ export default function AvalancheDashboard() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <Mountain className="w-8 h-8 text-blue-600" />
-              <h1 className="text-3xl font-bold text-slate-800">French Alps Avalanche Monitor</h1>
+              <h1 className="text-3xl font-bold text-slate-800">French Alps Avalanche Monitor v2</h1>
             </div>
             <button
               onClick={fetchWeatherData}
