@@ -314,7 +314,7 @@ export default function MeribelAvalancheDashboard() {
                     <YAxis label={{ value: '°C', angle: -90, position: 'insideLeft' }} tick={{ fontSize: 12 }} stroke="#64748b" />
                     <Tooltip contentStyle={{ backgroundColor: 'white', border: '1px solid #e2e8f0', borderRadius: '8px' }} />
                     <Legend />
-                    <Line type="monotone" dataKey="tempMax" stroke="#f03232" strokeWidth={2} name="High" dot={{ fill: '#ef4444', r: 3 }} />
+                    <Line type="monotone" dataKey="tempMax" stroke="#ef4444" strokeWidth={2} name="High" dot={{ fill: '#ef4444', r: 3 }} />
                     <Line type="monotone" dataKey="tempMin" stroke="#3b82f6" strokeWidth={2} name="Low" dot={{ fill: '#3b82f6', r: 3 }} />
                   </LineChart>
                 </ResponsiveContainer>
@@ -395,7 +395,7 @@ export default function MeribelAvalancheDashboard() {
         </div>
 
         <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <h3 className="font-semibold text-yellow-800 mb-2">⚠️ Important Info</h3>
+          <h3 className="font-semibold text-yellow-800 mb-2">⚠️ Important Information</h3>
           <p className="text-sm text-yellow-700 mb-2">This dashboard is for informational purposes only. For backcountry skiing and off-piste activities, always:</p>
           <ul className="text-sm text-yellow-700 space-y-1 ml-4">
             <li>• Check official Météo-France mountain forecasts before heading out</li>
