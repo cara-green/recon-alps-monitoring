@@ -314,7 +314,7 @@ export default function MeribelAvalancheDashboard() {
                     <YAxis label={{ value: '°C', angle: -90, position: 'insideLeft' }} tick={{ fontSize: 12 }} stroke="#64748b" />
                     <Tooltip contentStyle={{ backgroundColor: 'white', border: '1px solid #e2e8f0', borderRadius: '8px' }} />
                     <Legend />
-                    <Line type="monotone" dataKey="tempMax" stroke="#ef4444" strokeWidth={2} name="High" dot={{ fill: '#ef4444', r: 3 }} />
+                    <Line type="monotone" dataKey="tempMax" stroke="#ef44e9" strokeWidth={2} name="High" dot={{ fill: '#ef4444', r: 3 }} />
                     <Line type="monotone" dataKey="tempMin" stroke="#3b82f6" strokeWidth={2} name="Low" dot={{ fill: '#3b82f6', r: 3 }} />
                   </LineChart>
                 </ResponsiveContainer>
