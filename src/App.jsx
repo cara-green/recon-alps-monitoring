@@ -169,7 +169,7 @@ export default function MeribelAvalancheDashboard() {
         <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <svg width="32" height="32" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className="text-blue-600">
+              <svg width="45" height="45" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className="text-blue-600">
   <path d="M60 25 L95 85 L25 85 Z" fill="currentColor" stroke="#1e40af" strokeWidth="2"/>
   <path d="M60 25 L70 45 L60 40 L50 45 Z" fill="white"/>
   <path d="M75 85 L90 55 L105 85 Z" fill="currentColor" opacity="0.7" stroke="currentColor" strokeWidth="1.5"/>
