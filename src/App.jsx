@@ -170,7 +170,7 @@ export default function MeribelAvalancheDashboard() {
         <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-       <MeribelLogo size={64} className="text-blue-600" />
+       <MeribelLogo size={128} className="text-blue-600" />
               <div>
                 <h1 className="text-3xl font-bold text-slate-800">Méribel Avalanche Monitor</h1>
                 <p className="text-sm text-slate-600">Les Trois Vallées - Savoie, France</p>
